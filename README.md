@@ -19,9 +19,9 @@ At the end of the application's registration, you get your secret application ke
 
 In your application configuration, you have to use these informations to use SSO :
 
-- Authorization URL : `http://gendeconfiance.fr/oauth/v2/auth` (used to login)
-- Access token URL : `http://gendeconfiance.fr/oauth/v2/token`
-- Informations URL : `http://gensdeconfiance.fr/api-oauth/info` (used to get user informations based on the selected scopes)
+- Authorization URL : `https://gendeconfiance.fr/oauth/v2/auth` (used to login)
+- Access token URL : `https://gendeconfiance.fr/oauth/v2/token`
+- Informations URL : `https://gensdeconfiance.fr/api-oauth/info` (used to get user informations based on the selected scopes)
 
 ## Process Response
 
@@ -36,8 +36,8 @@ Here is a sample response from the GDC api :
         last_name: "sso_last_name",
         nbFriends: 5,
         gender: "male,
-        url: "http://gensdeconfience.fr/m/sso-user"
-        picture: 'http://path-to-picture.com/sso-ser'
+        url: "https://gensdeconfience.fr/m/sso-user"
+        picture: 'https://path-to-picture.com/sso-ser'
         friends: [4,5,6]
         groups: [
             {
