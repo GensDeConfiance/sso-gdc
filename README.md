@@ -53,3 +53,39 @@ Here is a sample response from the GDC api :
 ## References
 
 [FOSOAuthServerBundle](https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/blob/master/Resources/doc/index.md)
+
+## Example
+
+### Ask permission to user
+https://gensdeconfiance.fr/oauth/v2/auth?client_id=``your-client_id``&response_type=code&redirect_uri=``your-redirect-uri``
+This will redirect user to your callback url with a ``code`` parameter
+
+Example:
+https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest
+Will redirect to:
+https://gensdeconfiance.fr/test?code=abcde1234
+
+### Retrieve access_token
+Using the ``code`` parameter on your callback endpoint, retrieve content of url:
+https://gensdeconfiance.fr/oauth/v2/token?grant_type=authorization_code&redirect_uri=``your-redirect-uri``&client_id=``your-client_id``&client_secret=``your-client_secret``&code=``the-code-value``
+
+Will return a json response like:
+```json
+{
+    "access_token":"someacccesstoken",
+    "expires_in":3600,
+    "token_type":"bearer",
+    "scope":null,
+    "refresh_token":"somerefreshtoken"
+}
+```
+Or if error:
+```json
+{
+    "error":"invalid_grant",
+    "error_description":"The authorization code has expired"
+}
+```
+
+## Debugging
+If encoutered a 500 error, delete your user token (https://gensdeconfiance.fr/m/me/applications) (first part of page)
