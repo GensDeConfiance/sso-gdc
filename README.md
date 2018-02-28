@@ -63,7 +63,7 @@ This will redirect user to your callback url with a ``code`` parameter
 Example:
 https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest
 Will redirect to:
-https://gensdeconfiance.fr/test?code=abcde1234
+http://gdc.local/test?code=abcde1234
 
 ### Retrieve access_token
 Using the ``code`` parameter on your callback endpoint, retrieve content of url:
