@@ -61,13 +61,12 @@ Here is a sample response from the GDC api :
 
 ### Ask permission to user
 
-`https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI`
-This will redirect the user to your callback url with a `code` parameter
+Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI` will redirect the user to your callback url with a `code` parameter
 
 * Example:
-  * https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest
+  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest`
   * Will redirect to:
-    * http://gdc.local/test?code=abcde1234
+    * `http://gdc.local/test?code=abcde1234`
 
 ### Retrieve the `access_token`
 
@@ -76,7 +75,7 @@ Using the `code` parameter on your callback endpoint, you can retrieve the `acce
 
 The response will look like :
 * if successful :
-  * ```json
+```json
 {
   "access_token": "someacccesstoken",
   "expires_in": 3600,
@@ -86,7 +85,7 @@ The response will look like :
 }
 ```
 * if failed :
-  * ```json
+```json
 {
   "error": "invalid_grant",
   "error_description": "The authorization code has expired"
