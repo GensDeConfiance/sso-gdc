@@ -29,27 +29,69 @@ Here is a sample response from the GDC api :
 
 ```json
 {
-    response: {
-        id: 12,
-        email: "sso-user@example.org",
-        first_name: "sso-first_name",
-        last_name: "sso_last_name",
-        nbFriends: 5,
-        gender: "male,
-        url: "https://gensdeconfience.fr/m/sso-user"
-        picture: 'https://path-to-picture.com/sso-ser'
-        friends: [4,5,6]
-        groups: [
-            {
-                id: 3,
-                name: "sso-group"
-            }
-        ]
-
-    }
+  "response": {
+    "id": 12,
+    "email": "sso-user@example.org",
+    "first_name": "sso-first_name",
+    "last_name": "sso_last_name",
+    "nbFriends": 5,
+    "gender": "male",
+    "url": "https://gensdeconfience.fr/m/sso-user",
+    "picture": "https://path-to-picture.com/sso-ser",
+    "friends": [
+      4,
+      5,
+      6
+    ],
+    "groups": [
+      {
+        "id": 3,
+        "name": "sso-group"
+      }
+    ]
+  }
 }
 ```
 
 ## References
 
 [FOSOAuthServerBundle](https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/blob/master/Resources/doc/index.md)
+
+## Example
+
+### Ask permission to user
+
+Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI` will redirect the user to your callback url with a `code` parameter
+
+* Example:
+  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest`
+  * Will redirect to:
+    * `http://gdc.local/test?code=abcde1234`
+
+### Retrieve the `access_token`
+
+Using the `code` parameter on your callback endpoint, you can retrieve the `access token` calling the following URL :
+* `https://gensdeconfiance.fr/oauth/v2/token?grant_type=authorization_code&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_-_CLIENT_SECRET&code=THE_CODE_VALUE`
+
+The response will look like :
+* if successful :
+```json
+{
+  "access_token": "someacccesstoken",
+  "expires_in": 3600,
+  "refresh_token": "somerefreshtoken",
+  "scope": null,
+  "token_type": "bearer"
+}
+```
+* if failed :
+```json
+{
+  "error": "invalid_grant",
+  "error_description": "The authorization code has expired"
+}
+```
+
+## Debugging
+
+* If encoutered a 500 error, you should regenerate your user token in your application list : https://gensdeconfiance.fr/m/me/applications
