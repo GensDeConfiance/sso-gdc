@@ -32,13 +32,13 @@ Here is a sample response from the GDC api :
   "response": {
     "id": 12,
     "email": "sso-user@example.org",
-    "first_name": "sso-first_name",
-    "last_name": "sso_last_name",
-    "nbFriends": 5,
+    "firstName": "sso-first_name",
+    "lastName": "sso_last_name",
+    "nbReferrers": 5,
     "gender": "male",
     "url": "https://gensdeconfience.fr/m/sso-user",
     "picture": "https://path-to-picture.com/sso-ser",
-    "friends": [
+    "friendIds": [
       4,
       5,
       6
