@@ -4,7 +4,12 @@ namespace GDC;
 
 class SDK
 {
-    const ENDPOINT = 'https://gensdeconfiance.fr';
+    const SCOPE_PROFILE = 'profile';
+    const SCOPE_EMAIL = 'email';
+    const SCOPE_GROUPS = 'groups';
+    const SCOPE_FRIENDS = 'friends';
+
+    const ENDPOINT = 'https://gensdeconfiance.Fr';
 
     /**
      * @var string
@@ -36,7 +41,7 @@ class SDK
      */
     private $scope;
 
-    public function __construct($clientId, $clientSecret, $redirectUri, $scope = ['profile'])
+    public function __construct($clientId, $clientSecret, $redirectUri, $scope = [self::SCOPE_PROFILE])
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
@@ -53,7 +58,7 @@ class SDK
      */
     public function getLoginUrl()
     {
-        return sprintf('%s/oauth/v2/auth?client_id=%s&response_type=code&scope=%s&redirect_uri=%s', self::ENDPOINT, $this->clientId, implode(',', $this->scope), rawurlencode($this->redirectUri));
+        return sprintf('%s/oauth/v2/auth?client_id=%s&response_type=code&scope=%s&redirect_uri=%s', self::ENDPOINT, $this->clientId, rawurlencode(implode(' ', $this->scope)), rawurlencode($this->redirectUri));
     }
 
     public function setAccessToken($accessToken)

@@ -63,10 +63,10 @@ Here is a sample response from the GDC api :
 
 Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&scope=PERMISSION_ASKED` will redirect the user to your callback url with a `code` parameter.
 
-The scope parameter is a comma separated values of permissions between: email,friends,groups and profile . For example: scope=email,friends,profile .
+The scope parameter is a space separated values of permissions between: ``email``, ``friends``, ``groups`` and ``profile`` . For example: scope=email%20friends%20profile .
 
 * Example:
-  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest`
+  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest&scope=profile`
   * Will redirect to:
     * `http://gdc.local/test?code=abcde1234`
 
