@@ -61,7 +61,9 @@ Here is a sample response from the GDC api :
 
 ### Ask permission to user
 
-Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI` will redirect the user to your callback url with a `code` parameter
+Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&scope=PERMISSION_ASKED` will redirect the user to your callback url with a `code` parameter.
+
+The scope parameter is a comma separated values of permissions between: email,friends,groups and profile . For example: scope=email,friends,profile .
 
 * Example:
   * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=http%3A%2F%2Fgdc.local%2Ftest`
