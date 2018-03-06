@@ -25,42 +25,6 @@ In your application configuration, you have to use these informations to use SSO
 
 ## Process Response
 
-Here is a sample response from the GDC api :
-
-```json
-{
-  "response": {
-    "id": 12,
-    "firstName": "sso-first_name",
-    "lastName": "sso_last_name",
-    "nbReferrers": 3,
-    "nbReferees": 4,
-    "gender": "male",
-    "url": "https://gensdeconfience.fr/m/sso-user",
-    "picture": "https://path-to-picture.com/sso-user.jpg",
-    "email": "sso-user@example.org",
-    "referrerIds": [
-      4,
-      5,
-      6
-    ],
-    "refereeIds": [
-      4,
-      5,
-      6,
-      7
-    ],
-    "groups": [
-      {
-        "id": 3,
-        "name": "sso-group",
-        "image": "https://path-to-picture.com/sso-group.jpg",
-      }
-    ]
-  }
-}
-```
-
 ## References
 
 [FOSOAuthServerBundle](https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/blob/master/Resources/doc/index.md)
@@ -74,22 +38,22 @@ Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&respo
 The scope parameter is a space separated values of permissions between: ``email``, ``friends``, ``groups`` and ``profile`` . For example: scope=email%20friends%20profile .
 
 * Example:
-  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=https%3A%2F%2Fmyapp.io%2Fconnect%2Fgdc&scope=profile`
+  * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=https%3A%2F%2Fmyapp.io%2Fconnect%2Fgdc&scope=email%20friends%20profile`
   * Will redirect to:
     * `https://myapp.io/connect/gdc?code=abcde1234`
 
 ### Retrieve the `access_token`
 
 Using the `code` parameter on your callback endpoint, you can retrieve the `access token` calling the following URL :
-* `https://gensdeconfiance.fr/oauth/v2/token?grant_type=authorization_code&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_-_CLIENT_SECRET&code=THE_CODE_VALUE`
+* `https://gensdeconfiance.fr/oauth/v2/token?grant_type=authorization_code&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&code=THE_CODE_VALUE`
 
 The response will look like :
 * if successful :
 ```json
 {
-  "access_token": "someacccesstoken",
+  "access_token": "some_access_token",
   "expires_in": 3600,
-  "refresh_token": "somerefreshtoken",
+  "refresh_token": "some_refresh_token",
   "scope": null,
   "token_type": "bearer"
 }
@@ -99,6 +63,38 @@ The response will look like :
 {
   "error": "invalid_grant",
   "error_description": "The authorization code has expired"
+}
+```
+
+### Get the user data
+POST `https://gensdeconfiance.fr/api-oauth/info` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
+
+Here is a sample response from the GDC api :
+
+```json
+{
+  "response": {
+    "id": 12,
+    "firstName": "sso-first_name",
+    "lastName": "sso_last_name",
+    "nbReferrers": 3,
+    "gender": "male",
+    "url": "https://gensdeconfience.fr/m/sso-user",
+    "picture": "https://path-to-picture.com/sso-user.jpg",
+    "email": "sso-user@example.org",
+    "friendIds": [
+      4,
+      5,
+      6
+    ],
+    "groups": [
+      {
+        "id": 3,
+        "name": "sso-group",
+        "image": "https://path-to-picture.com/sso-group.jpg",
+      }
+    ]
+  }
 }
 ```
 

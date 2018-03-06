@@ -26,5 +26,5 @@ if (!$accessToken) {
 
 // We will retrieve informations about the Member
 $infos = $gdc->getInfos();
-echo 'Welcome '.$infos->first_name;
+echo 'Welcome '.$infos->firstName;
 ```
