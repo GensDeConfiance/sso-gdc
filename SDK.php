@@ -9,7 +9,7 @@ class SDK
     const SCOPE_GROUPS = 'groups';
     const SCOPE_FRIENDS = 'friends';
 
-    const ENDPOINT = 'https://gensdeconfiance.Fr';
+    const ENDPOINT = 'https://gensdeconfiance.fr';
 
     /**
      * @var string
@@ -116,14 +116,14 @@ class SDK
     /**
      * @return array
      */
-    public function getFriends()
+    public function getFriendIds()
     {
         $infos = $this->getInfo();
-        if (!isset($infos->friends)) {
-            throw new \Exception('No friends found on info endpoint. Please verify permissions and parameter scope');
+        if (!isset($infos->friendIds)) {
+            throw new \Exception('No friendIds found on info endpoint. Please verify permissions and parameter scope');
         }
 
-        return $infos->friends;
+        return $infos->friendIds;
     }
 
     public function refreshToken($refreshToken = null)
