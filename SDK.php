@@ -29,7 +29,7 @@ class SDK
     /**
      * @var \stdClass
      */
-    private $info;
+    private $infos;
 
     /**
      * @var string[]
@@ -88,11 +88,11 @@ class SDK
     public function getInfo()
     {
         if (null !== $this->infos) {
-            return $this->infos['response'];
+            return $this->infos->response;
         }
         $this->infos = $this->query('/api-oauth/info');
 
-        return $this->infos['response'];
+        return $this->infos->response;
     }
 
     /**
@@ -101,11 +101,11 @@ class SDK
     public function getGroups()
     {
         $infos = $this->getInfo();
-        if (!isset($infos['groups'])) {
+        if (!isset($infos->groups)) {
             throw new \Exception('No groups found on info endpoint. Please verify permissions and parameter scope');
         }
 
-        return $infos['groups'];
+        return $info->groups;
     }
 
     /**
@@ -114,11 +114,11 @@ class SDK
     public function getFriends()
     {
         $infos = $this->getInfo();
-        if (!isset($infos['friends'])) {
+        if (!isset($infos->friends)) {
             throw new \Exception('No friends found on info endpoint. Please verify permissions and parameter scope');
         }
 
-        return $infos['friends'];
+        return $infos->friends;
     }
 
     public function refreshToken($refreshToken = null)
@@ -151,7 +151,7 @@ class SDK
         }
         curl_close($ch);
 
-        return json_decode($data, true);
+        return json_decode($data);
     }
 
     private function getUrl($url)
