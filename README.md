@@ -31,8 +31,8 @@ Here is a sample response from the GDC api :
 {
   "response": {
     "id": 12,
-    "first_name": "sso-first_name",
-    "last_name": "sso_last_name",
+    "firstName": "sso-first_name",
+    "lastName": "sso_last_name",
     "nbReferrers": 3,
     "nbReferees": 4,
     "gender": "male",
