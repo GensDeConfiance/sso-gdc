@@ -11,7 +11,7 @@ include "SDK.php";
 // Prepare some configuration values
 $clientId = 'my-client-id';
 $clientSecret = 'my-client-secret';
-$redirectUri = 'http://my-domain.com/redirectUri.php';
+$redirectUri = 'https://myapp.io/redirectUri.php';
 $scope = ['profile', 'groups'];
 
 $gdc  = new GDC\SDK($clientId, $clientSecret, redirectUri, $scope);

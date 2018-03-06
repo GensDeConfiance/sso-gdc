@@ -145,7 +145,7 @@ class SDK
         if ($parameters && !empty($parameters)) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
         }
-        $headers = ['AUTHORIZATION: '.sprintf('Bearer %s', $this->getAccessToken())];
+        $headers = [sprintf('AUTHORIZATION: Bearer %s', $this->getAccessToken())];
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -159,8 +159,8 @@ class SDK
         return json_decode($data);
     }
 
-    private function getUrl($url)
+    private function getUrl($endpoint)
     {
-        return sprintf('%s%s', self::ENDPOINT, $url);
+        return sprintf('%s%s', self::ENDPOINT, $endpoint);
     }
 }
