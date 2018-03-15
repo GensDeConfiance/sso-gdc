@@ -21,7 +21,7 @@ In your application configuration, you have to use these informations to use SSO
 
 - Authorization URL : `https://gensdeconfiance.fr/oauth/v2/auth` (used to login)
 - Access token URL : `https://gensdeconfiance.fr/oauth/v2/token`
-- Informations URL : `https://gensdeconfiance.fr/api-oauth/info` (used to get user informations based on the selected scopes)
+- Informations URL : `https://gensdeconfiance.fr/api/v2/members/me` (used to get user informations based on the selected scopes)
 
 ## Process Response
 
