@@ -67,13 +67,12 @@ The response will look like :
 ```
 
 ### Get the user data
-POST `https://gensdeconfiance.fr/api-oauth/info` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
+GET `https://gensdeconfiance.fr/api/v2/members/me` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
 
 Here is a sample response from the GDC api :
 
 ```json
 {
-  "response": {
     "id": 12,
     "firstName": "sso-first_name",
     "lastName": "sso_last_name",
@@ -94,7 +93,6 @@ Here is a sample response from the GDC api :
         "image": "https://path-to-picture.com/sso-group.jpg",
       }
     ]
-  }
 }
 ```
 
