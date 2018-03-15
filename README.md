@@ -96,6 +96,13 @@ Here is a sample response from the GDC api :
 }
 ```
 
+### Refresh the user token
+Send a POST request to ``/oauth/v2/token`` with form parameters:
+    client_id      ``<your-client-id>``  
+    client_secret  ``<your-client-secret>``  
+    grant_type     refresh_token  
+    refresh_token  ``<the-refresh-token>``  
+
 ## Debugging
 
 * If encoutered a 500 error, you should regenerate your user token in your application list : https://gensdeconfiance.fr/m/me/applications
