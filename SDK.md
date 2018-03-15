@@ -27,4 +27,11 @@ if (!$accessToken) {
 // We will retrieve informations about the Member
 $infos = $gdc->getInfos();
 echo 'Welcome '.$infos->firstName;
+$refreshToken = $gdc->getRefreshToken();
+echo 'My refresh token is'.$gdc->getRefreshToken();
+
+// To refresh the access token
+$gdc->refreshToken($refreshToken);
+echo 'My new token is '.$gdc->getAccessToken();
+echo 'My new refresh token is'.$gdc->getRefreshToken();
 ```
