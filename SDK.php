@@ -96,9 +96,6 @@ class SDK
         return $this->jsonToken->refresh_token;
     }
 
-    /**
-     * @return array
-     */
     public function getInfo()
     {
         if (null !== $this->infos) {
@@ -165,7 +162,7 @@ class SDK
         }
         curl_close($ch);
 
-        return json_decode($data, true);
+        return json_decode($data);
     }
 
     private function getUrl($endpoint)
