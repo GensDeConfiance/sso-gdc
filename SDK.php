@@ -87,17 +87,23 @@ class SDK
         return $this->jsonToken->access_token;
     }
 
-    /**
-     * @return array
-     */
+    public function getRefreshToken()
+    {
+        if (null === $this->jsonToken) {
+            throw new \Exception('No access token. Please authenticate first.');
+        }
+
+        return $this->jsonToken->refresh_token;
+    }
+
     public function getInfo()
     {
         if (null !== $this->infos) {
             return $this->infos->response;
         }
-        $this->infos = $this->query('/api-oauth/info');
+        $this->infos = $this->query('/api/v2/members/me');
 
-        return $this->infos->response;
+        return $this->infos;
     }
 
     /**
@@ -131,7 +137,7 @@ class SDK
         if (null === $refreshToken) {
             $refreshToken = $this->jsonToken->refresh_token;
         }
-        $refreshUrl = sprintf('%s/oauth/v2/token?grant_type=refresh_token&redirect_uri=%s&client_id=%s&client_secret=%s&code=%s', self::ENDPOINT, rawurlencode($this->redirectUri), $this->clientId, $this->clientSecret, $refreshToken);
+        $refreshUrl = sprintf('%s/oauth/v2/token?grant_type=refresh_token&redirect_uri=%s&client_id=%s&client_secret=%s&refresh_token=%s', self::ENDPOINT, rawurlencode($this->redirectUri), $this->clientId, $this->clientSecret, $refreshToken);
         $this->jsonToken = json_decode(file_get_contents($refreshURL));
 
         return $this->getAccessToken();

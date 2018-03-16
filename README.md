@@ -21,7 +21,7 @@ In your application configuration, you have to use these informations to use SSO
 
 - Authorization URL : `https://gensdeconfiance.fr/oauth/v2/auth` (used to login)
 - Access token URL : `https://gensdeconfiance.fr/oauth/v2/token`
-- Informations URL : `https://gensdeconfiance.fr/api-oauth/info` (used to get user informations based on the selected scopes)
+- Informations URL : `https://gensdeconfiance.fr/api/v2/members/me` (used to get user informations based on the selected scopes)
 
 ## Process Response
 
@@ -67,13 +67,12 @@ The response will look like :
 ```
 
 ### Get the user data
-POST `https://gensdeconfiance.fr/api-oauth/info` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
+GET `https://gensdeconfiance.fr/api/v2/members/me` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
 
 Here is a sample response from the GDC api :
 
 ```json
 {
-  "response": {
     "id": 12,
     "firstName": "sso-first_name",
     "lastName": "sso_last_name",
@@ -94,9 +93,18 @@ Here is a sample response from the GDC api :
         "image": "https://path-to-picture.com/sso-group.jpg",
       }
     ]
-  }
 }
 ```
+
+### Refresh the user token
+```
+POST /oauth/v2/token
+    client_id      <your-client-id>
+    client_secret  <your-client-secret>
+    refresh_token  <the-refresh-token>
+    grant_type     refresh_token  
+```
+
 
 ## Debugging
 
