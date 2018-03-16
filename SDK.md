@@ -26,12 +26,12 @@ if (!$accessToken) {
 
 // We will retrieve informations about the Member
 $infos = $gdc->getInfos();
-echo 'Welcome '.$infos->firstName;
+echo sprintf('Welcome %s', $infos->firstName);
 $refreshToken = $gdc->getRefreshToken();
-echo 'My refresh token is'.$gdc->getRefreshToken();
+echo sprintf('My refresh token is %s', $gdc->getRefreshToken());
 
 // To refresh the access token
 $gdc->refreshToken($refreshToken);
-echo 'My new token is '.$gdc->getAccessToken();
-echo 'My new refresh token is'.$gdc->getRefreshToken();
+echo sprintf('My new token is %s', $gdc->getAccessToken());
+echo sprintf('My new refresh token is %s', $gdc->getRefreshToken());
 ```
