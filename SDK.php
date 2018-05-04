@@ -143,12 +143,12 @@ class SDK
         return $this->getAccessToken();
     }
 
-    private function query($endpoint, $parameters = [])
+    private function query($endpoint, $method = 'GET', $parameters = [])
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->getUrl($endpoint));
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        if ($parameters && !empty($parameters)) {
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        if ($parameters && !empty($parameters) && 'POST' === $method) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
         }
         $headers = [sprintf('AUTHORIZATION: Bearer %s', $this->getAccessToken())];
