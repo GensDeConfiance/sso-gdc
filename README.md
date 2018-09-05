@@ -2,7 +2,7 @@
 
 ## Declare a new application
 
-To use the GDC SSO, you have to create a new application in your profile settings, in **"Vos applications"**.
+To use the GDC SSO, you have to create a new application in your profile settings, in [**"Vos applications"**](https://gensdeconfiance.fr/m/me/applications).
 You have to set the name of your application, the URI of redirection and the informations you want to get back in the response.
 
 Be careful with the redirection, the URI has to be the same as the one you send in the request.
