@@ -8,7 +8,7 @@ You have to set the name of your application, the URI of redirection and the inf
 Be careful with the redirection, the URI has to be the same as the one you send in the request.
 For instance: `https://myapp.io/connect/gdc`
 
-The GDC SSO exposes 4 different scopes :
+The GDC SSO exposes 4 different scopes:
 - `profile` => first_name, last_name, picture
 - `email` => main email address
 - `groups` => list of user public networks
@@ -18,11 +18,11 @@ At the end of the application's registration, you get your secret application ke
 
 ## Configure your application with GDC SSO
 
-In your application configuration, you have to use these informations to use SSO :
+In your application configuration, you have to use these informations to use SSO:
 
-- Authorization URL : `https://gensdeconfiance.fr/oauth/v2/auth` (used to login)
-- Access token URL : `https://gensdeconfiance.fr/oauth/v2/token`
-- Informations URL : `https://gensdeconfiance.fr/api/v2/members/me` (used to get user informations based on the selected scopes)
+- Authorization URL: `https://gensdeconfiance.fr/oauth/v2/auth` (used to login)
+- Access token URL: `https://gensdeconfiance.fr/oauth/v2/token`
+- Informations URL: `https://gensdeconfiance.fr/api/v2/members/me` (used to get user informations based on the selected scopes)
 
 ## Process Response
 
@@ -36,7 +36,7 @@ In your application configuration, you have to use these informations to use SSO
 
 Calling `https://gensdeconfiance.fr/oauth/v2/auth?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REDIRECT_URI&scope=PERMISSION_ASKED` will redirect the user to your callback url with a `code` parameter.
 
-The scope parameter is a space separated values of permissions between: ``email``, ``friends``, ``groups`` and ``profile`` . For example: scope=email%20friends%20profile .
+The scope parameter is a space separated values of permissions between: ``email``, ``friends``, ``groups`` and ``profile``. For example: scope=email%20friends%20profile .
 
 * Example:
   * `https://gensdeconfiance.fr/oauth/v2/auth?client_id=1_23ABCDE&response_type=code&redirect_uri=https%3A%2F%2Fmyapp.io%2Fconnect%2Fgdc&scope=email%20friends%20profile`
@@ -45,11 +45,11 @@ The scope parameter is a space separated values of permissions between: ``email`
 
 ### Retrieve the `access_token`
 
-Using the `code` parameter on your callback endpoint, you can retrieve the `access token` calling the following URL :
+Using the `code` parameter on your callback endpoint, you can retrieve the `access token` calling the following URL:
 * `https://gensdeconfiance.fr/oauth/v2/token?grant_type=authorization_code&redirect_uri=YOUR_REDIRECT_URI&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&code=THE_CODE_VALUE`
 
-The response will look like :
-* if successful :
+The response will look like:
+* if successful:
 ```json
 {
   "access_token": "some_access_token",
@@ -59,7 +59,7 @@ The response will look like :
   "token_type": "bearer"
 }
 ```
-* if failed :
+* if failed:
 ```json
 {
   "error": "invalid_grant",
@@ -70,7 +70,7 @@ The response will look like :
 ### Get the user data
 GET `https://gensdeconfiance.fr/api/v2/members/me` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
 
-Here is a sample response from the GDC api :
+Here is a sample response from the GDC api:
 
 ```json
 {
@@ -109,4 +109,4 @@ POST /oauth/v2/token
 
 ## Debugging
 
-* If encoutered a 500 error, you should regenerate your user token in your application list : https://gensdeconfiance.fr/m/me/applications
+* If encoutered a 500 error, you should regenerate your user token in your application list: https://gensdeconfiance.fr/m/me/applications
