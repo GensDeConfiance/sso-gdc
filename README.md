@@ -6,7 +6,7 @@ To use the GDC SSO, you have to create a new application in your profile setting
 You have to set the name of your application, the URI of redirection and the informations you want to get back in the response.
 
 Be careful with the redirection, the URI has to be the same as the one you send in the request.
-For instance: https://myapp.io/connect/gdc
+For instance: `https://myapp.io/connect/gdc`
 
 The GDC SSO exposes 4 different scopes :
 - `profile` => first_name, last_name, picture
