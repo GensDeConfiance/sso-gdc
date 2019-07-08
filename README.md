@@ -79,7 +79,7 @@ Here is a sample response from the GDC api:
     "lastName": "sso_last_name",
     "nbReferrers": 3,
     "gender": "male",
-    "url": "https://gensdeconfience.fr/m/sso-user",
+    "url": "https://gensdeconfiance.fr/m/sso-user",
     "picture": "https://path-to-picture.com/sso-user.jpg",
     "email": "sso-user@example.org",
     "friendIds": [
