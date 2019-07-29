@@ -14,7 +14,7 @@ $clientSecret = 'my-client-secret';
 $redirectUri = 'https://myapp.io/redirectUri.php';
 $scope = ['profile', 'groups'];
 
-$gdc  = new GDC\SDK($clientId, $clientSecret, redirectUri, $scope);
+$gdc  = new GDC\SDK($clientId, $clientSecret, $redirectUri, $scope);
 $accessToken = $gdc->getAccessToken();
 
 // If we do not have a token, we will redirect user to the authorization page
