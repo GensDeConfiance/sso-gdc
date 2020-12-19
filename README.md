@@ -8,6 +8,8 @@ You have to set the name of your application, the URI of redirection and the inf
 Be careful with the redirection, the URI has to be the same as the one you send in the request.
 For instance: `https://myapp.io/connect/gdc`
 
+You can declare multiple redirection URIs, one per line.
+
 The GDC SSO exposes 4 different scopes:
 - `profile` => first_name, last_name, picture
 - `email` => main email address
