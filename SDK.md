@@ -25,7 +25,7 @@ if (!$accessToken) {
 }
 
 // We will retrieve informations about the Member
-$infos = $gdc->getInfos();
+$infos = $gdc->getInfo();
 echo sprintf('Welcome %s', $infos->firstName);
 $refreshToken = $gdc->getRefreshToken();
 echo sprintf('My refresh token is %s', $gdc->getRefreshToken());
