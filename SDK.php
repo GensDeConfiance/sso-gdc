@@ -138,7 +138,7 @@ class SDK
             $refreshToken = $this->jsonToken->refresh_token;
         }
         $refreshUrl = sprintf('%s/oauth/v2/token?grant_type=refresh_token&redirect_uri=%s&client_id=%s&client_secret=%s&refresh_token=%s', self::ENDPOINT, rawurlencode($this->redirectUri), $this->clientId, $this->clientSecret, $refreshToken);
-        $this->jsonToken = json_decode(file_get_contents($refreshURL));
+        $this->jsonToken = json_decode(file_get_contents($refreshUrl));
 
         return $this->getAccessToken();
     }
