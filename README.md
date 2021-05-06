@@ -3,7 +3,7 @@
 ## Declare a new application
 
 To use the GDC SSO, you have to create a new application in your profile settings, in [**"Vos applications"**](https://gensdeconfiance.com/us/m/me/applications).
-You have to set the name of your application, the URI of redirection and the informations you want to get back in the response.
+You have to set the name of your application, the URI of redirection and the information you want to get back in the response.
 
 Be careful with the redirection, the URI has to be the same as the one you send in the request.
 For instance: `https://myapp.io/connect/gdc`
@@ -24,7 +24,21 @@ In your application configuration, you have to use these informations to use SSO
 
 - Authorization URL: `https://gensdeconfiance.com/oauth/v2/auth` (used to login)
 - Access token URL: `https://gensdeconfiance.com/oauth/v2/token`
-- Informations URL: `https://gensdeconfiance.com/api/v2/members/me` (used to get user informations based on the selected scopes)
+- Information URL: `https://gensdeconfiance.com/api/v2/members/me` (used to get user information based on the selected scopes)
+
+## Use a specific user agent
+
+Gens de Confiance monitors the partner API requests, to identify your requests in our monitoring tools please add the following `User-Agent`.
+
+```
+User-Agent: GdcApiClient (vanity:{{vanity}})
+```
+
+Where `{{vanity}}` corresponds to your Gens de Confiance member identifier found in your member page URL.
+
+For example the value would be `xxxxxxxx` for a member page URL equals to `https://gensdeconfiance.com/fr/m/xxxxxxxx`.
+
+If you do not use a valid `User-Agent` HTTP header in your requests your requests will still work but can be rate limited with more aggressive rates.
 
 ## Process Response
 
@@ -70,6 +84,7 @@ The response will look like:
 ```
 
 ### Get the user data
+
 GET `https://gensdeconfiance.com/api/v2/members/me` with header AUTHORIZATION = `Bearer ACCESS_TOKEN`
 
 Here is a sample response from the GDC api:
@@ -93,7 +108,7 @@ Here is a sample response from the GDC api:
       {
         "id": 3,
         "name": "sso-group",
-        "image": "https://path-to-picture.com/sso-group.jpg",
+        "image": "https://path-to-picture.com/sso-group.jpg"
       }
     ]
 }
@@ -105,7 +120,7 @@ POST /oauth/v2/token
     client_id      <your-client-id>
     client_secret  <your-client-secret>
     refresh_token  <the-refresh-token>
-    grant_type     refresh_token  
+    grant_type     refresh_token
 ```
 
 
